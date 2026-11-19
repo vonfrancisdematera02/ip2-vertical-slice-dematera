@@ -1,3 +1,4 @@
+
 namespace Api.Features.Admissions;
 
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +11,7 @@ using Domain.Common;
 
 public static class AdmissionEndpoints
 {
-    private const string GetByIdRouteName = "GetCourseById";
+    private const string GetByIdRouteName = "GetAdmissionById";
 
     public static void MapAdmissionEndpoints(this IEndpointRouteBuilder app)
     {
@@ -53,14 +54,15 @@ public static class AdmissionEndpoints
             ? TypedResults.Ok(result.Value)
             : result.ToProblemDetails();
     }
-        private static async Task<IResult> GetAll(
-        [FromServices]IQueryHandler<GetAllAdmissionsQuery, Result<GetAllAdmissionsResponse>> handler,
+
+    private static async Task<IResult> GetAll(
+        [FromServices] IQueryHandler<GetAllAdmissionsQuery, Result<GetAllAdmissionsResponse>> handler,
         CancellationToken cancellationToken)
     {
         var query = new GetAllAdmissionsQuery();
         var result = await handler.HandleAsync(query, cancellationToken);
         return result.IsSuccess
-        ? TypedResults.Ok(result.Value)
-        : result.ToProblemDetails();
+            ? TypedResults.Ok(result.Value)
+            : result.ToProblemDetails();
     }
 }

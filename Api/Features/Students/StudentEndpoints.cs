@@ -1,3 +1,4 @@
+
 namespace Api.Features.Students;
 
 using Api.Common.Extensions;
@@ -9,7 +10,7 @@ using Domain.Common;
 
 public static class StudentEndpoints
 {
-    private const string GetByIdRouteName = "GetCourseById";
+    private const string GetByIdRouteName = "GetStudentById";
 
     public static void MapStudentEndpoints(this IEndpointRouteBuilder app)
     {
